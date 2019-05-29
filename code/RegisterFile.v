@@ -1,5 +1,5 @@
 module RegisterFile(input clk, input [4:0] R1point, R2point, writeRpoint, input [7:0] writeData, input writeEnable, output reg[7:0] R1, R2);
-    reg [7:0] Registers [0:32];
+    reg [7:0] Registers [0:31];
 
     integer i;
     initial begin

@@ -1,4 +1,4 @@
-module InsMemory(input [4:0] adress, output reg[31:0] outIns);
+module InsMemory(input [31:0] adress, output reg[31:0] outIns);
     integer               data_file    ; // file handler
     integer               scan_file    ; // file handler
     `define NULL 0
@@ -21,7 +21,7 @@ module InsMemory(input [4:0] adress, output reg[31:0] outIns);
     end
 
     always @(*) begin
-      outIns = instractions[adress];
+      outIns = instractions[adress/4];
     end
     
 endmodule
