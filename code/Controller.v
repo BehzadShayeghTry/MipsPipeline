@@ -1,34 +1,22 @@
-module Controller(input [3:0] opcode, input clk,
-                output reg selImm, selMemOut, beq, jump, winUpdate,
-                output reg writeFR, writeDM, readDM);
-    initial {selImm, selMemOut, beq, jump, writeFR, writeDM, readDM, winUpdate} = 8'b 0;
+module Controller(input [5:0] opcode, func,
+                output reg [2:0] aluSig, output reg WB);
 
-    always @(opcode) begin
-        {selImm, selMemOut, beq, jump, writeFR, writeDM, readDM, winUpdate} = 8'b 0;
+    initial {aluSig, WB} = 4'b 0;
+
+    always @(*) begin
+        {aluSig, WB} = 4'b 0;
 
         case (opcode)
-            4'b 0000: begin
-                readDM = 1;
-                selMemOut = 1;
-                writeFR = 1;
+            6'b 000000: begin
+                WB = 1;
+                aluSig = (func == 6'b 000001) ? 0 :
+                        (func == 6'b 010001) ? 1 :
+                        (func == 6'b 001001) ? 2 :
+                        (func == 6'b 101001) ? 3 :
+                        (func == 6'b 010101) ? 4 : 0;
             end
-            4'b 0001: begin
-                writeDM = 1;
-            end
-            4'b 0010: begin
-                jump = 1;
-            end
-            4'b 0100: begin
-                beq = 1;
-            end
-            4'b 1000: begin
-                writeFR = 1;
-                winUpdate = 1;
-            end
-            default: begin
-                selImm = 1;
-                writeFR = 1;
-            end
+            default :
+                WB = 0;
         endcase
     end
 endmodule
