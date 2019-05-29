@@ -1,4 +1,4 @@
-module DataPath(input cll);
+module DataPath(input clk);
 
 ///////////////////////////////////////////////////IF
     wire [4:0] pcInput, pcOutput;
@@ -28,7 +28,7 @@ module DataPath(input cll);
 ///////////////////////////////////////////////////IF
     PC pc(clk, pcInput, pcOutput);
     Adder pcPluc(pcOutput, 1, pcInput);
-    InstructionMemory im(pcOutput, instructionIF);
+    InsMemory im(pcOutput, instructionIF);
 
     IFID ifid(clk, instructionIF, instructionID);
 ///////////////////////////////////////////////////ID

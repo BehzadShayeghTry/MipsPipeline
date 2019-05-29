@@ -9,11 +9,11 @@ module Controller(input [5:0] opcode, func,
         case (opcode)
             6'b 000000: begin
                 WB = 1;
-                aluSig = (func == 6'b 000001) ? 0 :
-                        (func == 6'b 010001) ? 1 :
-                        (func == 6'b 001001) ? 2 :
-                        (func == 6'b 101001) ? 3 :
-                        (func == 6'b 010101) ? 4 : 0;
+                aluSig = (func == 6'b 100000) ? 0 :
+                        (func == 6'b 100010) ? 1 :
+                        (func == 6'b 100100) ? 2 :
+                        (func == 6'b 100101) ? 3 :
+                        (func == 6'b 101010) ? 4 : 0;
             end
             default :
                 WB = 0;
