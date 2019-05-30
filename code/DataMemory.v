@@ -1,7 +1,8 @@
-module DataMemory(input [9:0] Rpoint, input [15:0] writeData, input write, read, output reg[15:0] outR);
-    reg [7:0] Registers [0:1023];
+module DataMemory(input [31:0] Rpoint, input [31:0] writeData, input write, output reg[31:0] outR);
+    reg [31:0] Registers [0:1023];
+    initial Registers[7] = 54;
     always@(*) begin
+        outR = Registers[Rpoint];
         if (write) Registers[Rpoint] = writeData;
-        if (read) outR = Registers[Rpoint];
     end
 endmodule

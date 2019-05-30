@@ -1,10 +1,10 @@
 module Controller(input [5:0] opcode, func, input equal,
-                output reg [2:0] aluSig, output reg WB, jumpSel, jumpCondSel);
+                output reg [2:0] aluSig, output reg WB, jumpSel, jumpCondSel, extendForMem, WMEM, load);
 
-    initial {aluSig, WB, jumpSel, jumpCondSel} = 6'b 0;
+    initial {aluSig, WB, jumpSel, jumpCondSel, extendForMem, WMEM, load} = 9'b 0;
 
     always @(*) begin
-        {aluSig, WB, jumpSel, jumpCondSel} = 6'b 0;
+        {aluSig, WB, jumpSel, jumpCondSel, extendForMem, WMEM, load} = 9'b 0;
 
         case (opcode)
             6'b 000000: begin
@@ -24,8 +24,19 @@ module Controller(input [5:0] opcode, func, input equal,
             6'b 000101: begin
                 jumpCondSel = equal ? 0 : 1;
             end
-            default :
+            6'b 100011: begin
+                extendForMem = 1;
+                load = 1;
+                WB = 1;
+            end
+            6'b 101011: begin
+                WMEM = 1;
+                extendForMem = 1;
+            end
+            default : begin
                 WB = 0;
+                WMEM = 0; 
+            end
         endcase
     end
 endmodule

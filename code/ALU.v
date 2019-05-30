@@ -1,4 +1,4 @@
-module ALU(input [7:0] R1, R2, input [2:0] controlSignal, output reg[7:0] out);
+module ALU(input [31:0] R1, R2, input [2:0] controlSignal, output reg[31:0] out);
   always @(*) begin
     case (controlSignal)
     	0: out = R1 + R2;
