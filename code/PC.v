@@ -1,7 +1,7 @@
-module PC(input clk, input [31:0] in, output reg [31:0] out);
+module PC(input clk, input [31:0] in, output reg [31:0] out, input flush);
 	initial out = 0;
 	always @(posedge clk) begin
-		out <= in;
+		if(!flush) out <= in;
 	end
 endmodule
 
