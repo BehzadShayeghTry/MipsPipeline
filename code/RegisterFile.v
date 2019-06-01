@@ -8,10 +8,11 @@ module RegisterFile(input clk, input [4:0] R1point, R2point, writeRpoint, input 
         end
         // Registers[0] = 3;
         // Registers[1] = 5;
-        Registers[1] = 1;
+        // // Registers[1] = 1;
     end
 
     always @(*) begin
+        Registers[0] = 0;
         R1 = Registers[R1point];
 		R2 = Registers[R2point];
     end
