@@ -30,7 +30,7 @@ module DataPath(input clk);
     Adder pcplus(pcOutput, 4, pcPlus);
     InsMemory im(pcOutput, insIF);
 
-    IFID ifid(clk, insIF, pcPlus, insID, pcID, flush);
+    IFID ifid(clk, insIF, pcPlus, insID, pcID, flush, jumpSel);
 ///////////////////////////////////////////////////ID
     Controller clt(insID[31:26], insID[5:0], equal, aluSigID, WB_ID, jumpSel, jumpCondSel, extendForMemID, WMEM_ID, loadID);
     RegisterFile rf(clk, insID[25:21], insID[20:16], writeRegPoint, writeData, writeEnable, R1ID, R2ofRf);

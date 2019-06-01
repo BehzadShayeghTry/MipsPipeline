@@ -4,10 +4,11 @@ module RegisterFile(input clk, input [4:0] R1point, R2point, writeRpoint, input 
     integer i;
     initial begin
         for (i=0; i<32; i=i+1) begin
-            Registers[i] = 8'b 0;
+            Registers[i] = 0;
         end
-        Registers[0] = 3;
-        Registers[1] = 5;
+        // Registers[0] = 3;
+        // Registers[1] = 5;
+        Registers[1] = 1;
     end
 
     always @(*) begin
