@@ -3,10 +3,10 @@ Computer Architecture - UT CE - Spring 2019
 
 make simple pipeline mips architecture as a general propose CPU.
 
-Contributors :
+### Contributors :
 
  - Behzad Shayegh
- - Aref Afzali
+ - Aref Afzali [[+](https://github.com/arefafzali)]
 
 Test :
 
