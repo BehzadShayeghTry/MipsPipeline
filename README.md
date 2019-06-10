@@ -8,6 +8,6 @@ make simple pipeline mips architecture as a general propose CPU.
  - Behzad Shayegh
  - Aref Afzali [[+](https://github.com/arefafzali)]
 
-Test :
+### Test :
 
 To test, choose a test file from test directory and put that in project directory and rename it as instructions.txt.
